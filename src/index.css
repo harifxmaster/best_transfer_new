@@ -1,0 +1,37 @@
+/* 1️⃣ Import Urbanist font FIRST */
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* 2️⃣ Import Tailwind */
+@import "tailwindcss";
+
+/* 3️⃣ Apply font globally */
+@layer base {
+  html {
+    font-family: 'Urbanist', system-ui, sans-serif;
+  }
+}
+
+/* 4️⃣ Your existing utilities (unchanged) */
+@layer utilities {
+  .animate-infinite {
+    animation: infinite-scroll 18s linear infinite;
+  }
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
