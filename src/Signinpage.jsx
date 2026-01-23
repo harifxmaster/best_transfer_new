@@ -1,14 +1,48 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function SignIn() {
-  const [type, setType] = useState("individual");
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = {};
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.password) newErrors.password = "Password is required";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    toast.success("Login successful!");
+    // navigate("/dashboard"); // uncomment when ready
+  };
 
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center px-4"
       style={{ backgroundImage: "url('/loginbg.png')" }}
     >
+      <button
+        className="absolute top-16 left-40 cursor-pointer flex items-center gap-2 text-white hover:opacity-80"
+        onClick={() => navigate("/")}
+      >
+        <span className="text-lg">←</span> Back
+      </button>
+
+      <Toaster position="top-right" reverseOrder={false} />
+
+      {/* Logo */}
       <div className="flex items-center pt-10 justify-center gap-2 mb-6">
         <img
           src="/Besttransferlogo.png"
@@ -27,61 +61,32 @@ export default function SignIn() {
           Secure · Fast · Reliable
         </p>
 
-        {/* 🔹 TOGGLE (added only) */}
-        <div className="flex justify-center mb-6">
-          <div className="bg-gray-200 rounded-full p-1 flex gap-2">
-            <button
-              onClick={() => setType("individual")}
-              className={`px-6 py-1.5 rounded-full text-sm font-medium transition ${
-                type === "individual" ? "bg-[#3369CA] text-white" : "bg-white"
-              }`}
-            >
-              Individual
-            </button>
+        <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
+          <Input
+            label="Email"
+            name="email"
+            placeholder="Enter your Email ID"
+            value={formData.email}
+            onChange={handleChange}
+            error={errors.email}
+          />
 
-            <button
-              onClick={() => setType("business")}
-              className={`px-6 py-1.5 rounded-full text-sm font-medium transition ${
-                type === "business" ? "bg-[#3369CA] text-white" : "bg-white"
-              }`}
-            >
-              Business
-            </button>
-          </div>
-        </div>
+          <Input
+            label="Password"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            value={formData.password}
+            onChange={handleChange}
+            error={errors.password}
+          />
 
-        {/* Form (UNCHANGED) */}
-        <form className="grid grid-cols-2 gap-6">
-          {/* Email */}
-          <div className="col-span-2">
-            <label className="text-sm font-semibold text-[#1F3A66]">
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="Enter your Email ID"
-              className={input}
-            />
-          </div>
-
-          {/* Password */}
-          <div className="col-span-2">
-            <label className="text-sm text-[#1F3A66] font-semibold">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="Enter your password"
-              className={input}
-            />
-          </div>
-
-          {/* Remember + Forgot */}
+          {/* Remember & Forgot */}
           <div className="col-span-2 flex items-center justify-between text-sm mt-1">
-            <label className="flex items-center gap-2 font-semibold  text-gray-700">
+            <label className="flex items-center gap-2 font-semibold text-gray-700">
               <input
                 type="checkbox"
-                className="accent-blue-600  text-[#45474B]"
+                className="accent-blue-600 text-[#45474B]"
               />
               Remember me
             </label>
@@ -93,6 +98,8 @@ export default function SignIn() {
               Forgot Password?
             </Link>
           </div>
+
+          {/* Submit Button */}
           <div className="col-span-2 flex justify-center">
             <button
               type="submit"
@@ -104,9 +111,9 @@ export default function SignIn() {
 
           {/* Footer */}
           <div className="col-span-2 ml-20 font-semibold flex items-center justify-between">
-            <p className="text-sm text-[#45474B] pl-1 ">
+            <p className="text-sm text-[#45474B] pl-1">
               Don’t have an account?{" "}
-              <Link to="/signup" className="text-[#1A54CF] hover:underline">
+              <Link to="/sign-up" className="text-[#1A54CF] hover:underline">
                 Sign Up
               </Link>
             </p>
@@ -117,6 +124,19 @@ export default function SignIn() {
   );
 }
 
-/* Input style (UNCHANGED) */
-const input =
-  "mt-1 w-full rounded-xl border border-gray-300 px-4 py-3 bg-white text-sm focus:outline-none focus:ring-1 focus:ring-black-100";
+function Input({ label, error, className = "", ...props }) {
+  return (
+    <div className={`col-span-2 ${className}`}>
+      <label className="text-sm font-semibold text-[#1F3A66]">{label}</label>
+      <input
+        {...props}
+        className={`mt-1 h-12 w-full hover:bg-white rounded-xl border px-4 text-sm focus:outline-none
+          ${error ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-blue-400"}
+        `}
+      />
+      {error && (
+        <p className="mt-1 text-xs text-red-500 font-medium">{error}</p>
+      )}
+    </div>
+  );
+}

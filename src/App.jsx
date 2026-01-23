@@ -4,6 +4,8 @@ import Landingpage from "./Landingpage.jsx"
 import PaymentsPage from './Paymentspage.jsx'
 import SignIn from './Signinpage.jsx'
 import Signup from './Signuppage.jsx'
+import Termsandconditions from './Termsandconditions.jsx'
+import Privacystatement from './Privacystatement.jsx'
 
 
 const App = () => {
@@ -11,8 +13,10 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Landingpage />} />
         <Route path='/payments/:type' element={<PaymentsPage />}/>
-        <Route path='/signin' element={<SignIn />} />
-        <Route path='/Signup' element={<Signup />}/>
+        <Route path='/sign-in' element={<SignIn />} />
+        <Route path='/sign-up' element={<Signup />}/>
+        <Route path='/privacy-policy' element={<Privacystatement />}/>
+        <Route path='/terms-and-conditions' element={<Termsandconditions />} />
       </Routes>
   )
 }

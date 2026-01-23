@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Subtract from "../public/Subtract.svg";
 
 import conversion from "./assets/Images/conversion.png";
@@ -49,7 +49,7 @@ const images = [
 
 import Testimonials from "./Testimonials";
 const Landingpage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [imagedec, setImagedec] = useState(1);
   const [openFaqs, setOpenFaqs] = useState({});
 
@@ -149,25 +149,26 @@ const Landingpage = () => {
                 About Us
               </a>
               <Link
-                to = "/signin"
-                className=" text-[#1F2937] ml-10 text-sm md:text-[16px]"
+                to="/sign-in"
+                className="text-[#1A54CF] font-bold ml-10 text-sm md:text-[16px]"
               >
                 Sign In
               </Link>
               <Link
-               to='/signup'
-               className="px-6 py-2 md:py-1 bg-blue-600 cursor-pointer w-[120px] md:w-[136px] h-[35px] md:-mt-2 text-white rounded-xl text-sm md:text-[16px]">
+                to="/sign-up"
+                className="px-6 py-2 md:py-1 bg-blue-600 cursor-pointer w-[120px] md:w-[136px] h-[35px] md:-mt-2 text-white rounded-xl text-sm md:text-[16px]"
+              >
                 Get Started
               </Link>
             </div>
           </div>
           <div className="mt-6 md:mt-10 text-center max-w-[900px]">
             <h1 className="text-3xl md:text-[50px] font-bold text-[#1A54CF]">
-              Your All-in-One{" "}
-              <span className="text-[#394784]">Digital Platform for</span>
-            </h1>
-            <h1 className="text-xl md:text-[40px] font-semibold text-[#394784] mt-2 md:mt-4">
-              Global Transfers and Seamless Crypto Transactions
+              Move money worldwide{" "}
+              <span className="text-[#394784]">
+                and send or receive crypto instantly — all in one secure,
+                easy-to-use platform
+              </span>
             </h1>
 
             <div className="mt-4 md:mt-6 space-y-2 text-sm md:text-[20px] text-[#7983AD]">
@@ -911,9 +912,9 @@ const Landingpage = () => {
             @2025 Best Transfer All rights reserved
           </p>
           <p>
-            FX Master Limited, transferring as FX Master, is an Authorised Payment
-            institution under firm reference number 538425 with the UK Financial
-            Conduct Authority (FCA).
+            FX Master Limited, transferring as FX Master, is an Authorised
+            Payment institution under firm reference number 538425 with the UK
+            Financial Conduct Authority (FCA).
           </p>
           <p>
             FX Master Limited is registered in England and Wales with Companies
