@@ -23,18 +23,15 @@ export default function SignIn() {
       setErrors(newErrors);
       return;
     }
-
-    toast.success("Login successful!");
-    // navigate("/dashboard"); // uncomment when ready
   };
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center px-4"
+      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center px-4 sm:px-6 lg:px-8"
       style={{ backgroundImage: "url('/loginbg.png')" }}
     >
       <button
-        className="absolute top-16 left-40 cursor-pointer flex items-center gap-2 text-white hover:opacity-80"
+        className="absolute top-16 left-4 sm:left-10 cursor-pointer flex items-center gap-2 text-white hover:opacity-80"
         onClick={() => navigate("/")}
       >
         <span className="text-lg">←</span> Back
@@ -52,16 +49,17 @@ export default function SignIn() {
       </div>
 
       {/* Card */}
-      <div className="w-[40%] max-w-4xl bg-white/82 backdrop-blur-md rounded-3xl shadow-2xl px-12 py-10">
-        {/* Heading */}
+      <div
+        className="w-full max-w-md bg-[linear-gradient(135deg,#FFF5F9_0%,#FFFFFF_50%,#FFF8FA_100%)] backdrop-blur-md rounded-3xl shadow-2xl px-6 sm:px-12 py-8 sm:py-10"
+      >
         <h2 className="text-center text-xl font-bold text-[#394784] mb-1">
-          Create Your BestTransfer Account
+          Sign In to BestTransfer
         </h2>
-        <p className="text-center font-semibold text-sm text-[#394784] mb-4">
+        <p className="text-center font-semibold text-sm text-[#394784] mb-6">
           Secure · Fast · Reliable
         </p>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <Input
             label="Email"
             name="email"
@@ -81,13 +79,9 @@ export default function SignIn() {
             error={errors.password}
           />
 
-          {/* Remember & Forgot */}
-          <div className="col-span-2 flex items-center justify-between text-sm mt-1">
+          <div className="col-span-1 sm:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm mt-1 gap-2 sm:gap-0">
             <label className="flex items-center gap-2 font-semibold text-gray-700">
-              <input
-                type="checkbox"
-                className="accent-blue-600 text-[#45474B]"
-              />
+              <input type="checkbox" className="accent-blue-600" />
               Remember me
             </label>
 
@@ -99,19 +93,17 @@ export default function SignIn() {
             </Link>
           </div>
 
-          {/* Submit Button */}
-          <div className="col-span-2 flex justify-center">
+          <div className="col-span-1 sm:col-span-2 flex justify-center">
             <button
               type="submit"
-              className="bg-gradient-to-r w-60 bg-[#631CDE] text-white px-5 py-2 rounded-3xl font-medium hover:opacity-90"
+              className="bg-[#631CDE] w-full sm:w-60 text-white px-5 py-2 rounded-3xl font-medium hover:opacity-90"
             >
               Sign in
             </button>
           </div>
 
-          {/* Footer */}
-          <div className="col-span-2 ml-20 font-semibold flex items-center justify-between">
-            <p className="text-sm text-[#45474B] pl-1">
+          <div className="col-span-1 sm:col-span-2 font-semibold flex flex-col sm:flex-row items-center justify-center sm:justify-between mt-4 gap-2 sm:gap-0 text-sm text-[#45474B]">
+            <p>
               Don’t have an account?{" "}
               <Link to="/sign-up" className="text-[#1A54CF] hover:underline">
                 Sign Up
@@ -126,7 +118,7 @@ export default function SignIn() {
 
 function Input({ label, error, className = "", ...props }) {
   return (
-    <div className={`col-span-2 ${className}`}>
+    <div className={`col-span-1 sm:col-span-2 ${className}`}>
       <label className="text-sm font-semibold text-[#1F3A66]">{label}</label>
       <input
         {...props}

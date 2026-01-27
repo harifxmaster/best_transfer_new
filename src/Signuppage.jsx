@@ -38,6 +38,7 @@ export default function Signup() {
       if (!formData.mobilenumber)
         newErrors.mobilenumber = "Mobile Number is required";
     }
+
     if (type === "individual") {
       if (!formData.firstname) newErrors.firstname = "First Name is required";
       if (!formData.lastname) newErrors.lastname = "Last Name is required";
@@ -61,17 +62,17 @@ export default function Signup() {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center px-4"
+      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center px-4 sm:px-0"
       style={{ backgroundImage: "url('/loginbg.png')" }}
     >
       <button
-        className="absolute top-16 left-40 cursor-pointer flex items-center gap-2 text-white hover:opacity-80"
+        className="absolute top-6 left-4 sm:top-16 sm:left-40 cursor-pointer flex items-center gap-2 text-white hover:opacity-80"
         onClick={() => navigate("/")}
       >
         <span className="text-lg">←</span> Back
       </button>
+
       <Toaster position="top-right" reverseOrder={false} />
-      {/* Logo */}
       <div className="mb-5 mt-10">
         <img
           src="/Besttransferlogo.png"
@@ -80,9 +81,7 @@ export default function Signup() {
         />
       </div>
 
-      {/* Card */}
-      <div className="w-[50%] bg-white/82 backdrop-blur-xl rounded-[28px] shadow-2xl px-14 py-12">
-        {/* Heading */}
+      <div className="w-full sm:w-[50%] bg-[linear-gradient(135deg,#FFF5F9_0%,#FFFFFF_50%,#FFF8FA_100%)] backdrop-blur-xl rounded-[28px] shadow-2xl px-6 py-8 sm:px-14 sm:py-12">
         <h2 className="text-center text-lg font-bold text-[#394784]">
           Create Your BestTransfer Account
         </h2>
@@ -114,15 +113,12 @@ export default function Signup() {
             </button>
           </div>
         </div>
-
-        {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="grid grid-cols-2 gap-x-6 gap-y-5"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5"
         >
           {type === "individual" && (
             <>
-              {/* Row 1 */}
               <Input
                 label="First Name"
                 onChange={handleChange}
@@ -137,8 +133,6 @@ export default function Signup() {
                 name="lastname"
                 error={errors.lastname}
               />
-
-              {/* Row 2 */}
               <Input
                 label="Email Address"
                 onChange={handleChange}
@@ -153,8 +147,6 @@ export default function Signup() {
                 name="phonenumber"
                 error={errors.phonenumber}
               />
-
-              {/* Row 3 */}
               <Input
                 label="Create Password"
                 type="password"
@@ -174,7 +166,6 @@ export default function Signup() {
             </>
           )}
 
-          {/* BUSINESS */}
           {type === "business" && (
             <>
               <Input
@@ -184,7 +175,6 @@ export default function Signup() {
                 name="businessname"
                 error={errors.businessname}
               />
-
               <Input
                 label="Business Type"
                 onChange={handleChange}
@@ -192,7 +182,6 @@ export default function Signup() {
                 name="businesstype"
                 error={errors.businesstype}
               />
-
               <Input
                 label="Business Address"
                 onChange={handleChange}
@@ -200,14 +189,12 @@ export default function Signup() {
                 name="businessaddress"
                 error={errors.businessaddress}
               />
-
               <Input
                 label="Business Email Address"
                 onChange={handleChange}
                 placeholder="Enter your Business Email Address"
                 name="businessemailaddress"
               />
-
               <Input
                 label="Create Password"
                 type="password"
@@ -216,7 +203,6 @@ export default function Signup() {
                 name="createpassword"
                 error={errors.createpassword}
               />
-
               <Input
                 label="Confirm Password"
                 type="password"
@@ -225,7 +211,6 @@ export default function Signup() {
                 name="confirmbusinesspassword"
                 error={errors.confirmpassword}
               />
-
               <Input
                 label="Your Role In Business"
                 onChange={handleChange}
@@ -233,7 +218,6 @@ export default function Signup() {
                 name="businessrole"
                 error={errors.businessrole}
               />
-
               <Input
                 label="Your Name"
                 name="yourname"
@@ -241,7 +225,6 @@ export default function Signup() {
                 placeholder="Enter your Name"
                 error={errors.yourname}
               />
-
               <Input
                 label="Email"
                 name="email"
@@ -249,7 +232,6 @@ export default function Signup() {
                 placeholder="Enter your Email Address"
                 error={errors.email}
               />
-
               <Input
                 label="Mobile Number"
                 name="mobilenumber"
@@ -261,7 +243,7 @@ export default function Signup() {
           )}
 
           {/* Terms */}
-          <div className="col-span-2 flex items-start gap-3 mt-3 text-sm  text-[#394784]">
+          <div className="col-span-1 sm:col-span-2 flex items-start gap-3 mt-3 text-sm text-[#394784]">
             <input type="checkbox" className="h-4 w-4 mt-1 accent-blue-600" />
             <p>
               By continuing, I agree to the Best Transfer{" "}
@@ -283,7 +265,7 @@ export default function Signup() {
           </div>
 
           {/* Footer */}
-          <div className="col-span-2 flex items-center justify-between">
+          <div className="col-span-1 sm:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
             <p className="text-sm text-[#45474B]">
               Already have an account?{" "}
               <Link to="/sign-in" className="text-[#1A54CF] font-bold">
@@ -293,7 +275,7 @@ export default function Signup() {
 
             <button
               type="submit"
-              className="px-8 py-3 rounded-xl bg-[#631CDE] text-white text-sm font-semibold flex items-center gap-2 shadow-lg hover:opacity-90"
+              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#631CDE] text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:opacity-90"
             >
               Submit →
             </button>
@@ -311,7 +293,11 @@ function Input({ label, error, className = "", ...props }) {
       <input
         {...props}
         className={`mt-1 h-12 w-full hover:bg-white rounded-xl border px-4 text-sm focus:outline-none
-          ${error ? "border-red-500 focus:ring-red-400" : "border-gray-200 focus:ring-blue-400"}
+          ${
+            error
+              ? "border-red-500 focus:ring-red-400"
+              : "border-gray-200 focus:ring-blue-400"
+          }
         `}
       />
       {error && <p className="mt-1 text-s text-red-500 font-medium">{error}</p>}

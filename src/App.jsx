@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes,Route} from "react-router-dom"
-import Landingpage from "./Landingpage.jsx"
+import Landingpage from "../src/Landingpage.jsx"
 import PaymentsPage from './Paymentspage.jsx'
 import SignIn from './Signinpage.jsx'
 import Signup from './Signuppage.jsx'

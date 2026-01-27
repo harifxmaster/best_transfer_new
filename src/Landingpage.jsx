@@ -52,6 +52,7 @@ const Landingpage = () => {
   // const navigate = useNavigate();
   const [imagedec, setImagedec] = useState(1);
   const [openFaqs, setOpenFaqs] = useState({});
+  const [open, setOpen] = useState(false);
 
   const toggleFaq = (key) => {
     setOpenFaqs((prev) => ({
@@ -66,7 +67,12 @@ const Landingpage = () => {
   return (
     <div className=" flex flex-col min-h-screen overflow-x-hidden scrollbar-hide">
       <div
-        className="w-full min-h-screen scrollbar-hide relative bg-cover overflow-x-hidden overflow-y-auto"
+        onClick={() => {
+          if (open) {
+            setOpen(false);
+          }
+        }}
+        className="w-full min-h-screen  scrollbar-hide relative bg-cover overflow-x-hidden overflow-y-hidden"
         style={{ backgroundImage: "url('/src/assets/Images/bg.png')" }}
       >
         <div className="max-w-[1200px] h-[760px] mx-auto p-4 md:p-4 flex flex-col scrollbar-hide items-center">
@@ -91,49 +97,68 @@ const Landingpage = () => {
               <a className="text-[#1A54CF]" href="">
                 Home
               </a>
-              {/* <a className="text-[#1F2937]" href="">
-                Payments
-              </a> */}
-              <div className="relative inline-block group">
-                {/* Trigger */}
-                <span className="cursor-pointer text-[#1F2937] font-medium px-2 py-0 inline-flex items-center">
+              <div className="relative inline-block">
+                <span
+                  onClick={() => setOpen((prev) => !prev)}
+                  className="cursor-pointer text-[#1F2937] font-medium px-2 inline-flex items-center select-none"
+                >
                   Payments
+                  <svg
+                    className={`ml-1 h-4 w-4 transform transition-transform duration-200 ${
+                      open ? "rotate-180" : "rotate-0"
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
                 </span>
-                <div className="absolute left-0 top-full hidden group-hover:block bg-white border border-gray-200 rounded-lg shadow-lg w-64 z-50">
-                  <Link
-                    to="/payments/send"
-                    className="block px-4 py-3 cursor-pointer hover:bg-gray-100"
-                  >
-                    <p className="text-sm font-semibold text-[#1F2937]">Send</p>
-                    <p className="text-xs text-gray-500">
-                      Send money to individuals or businesses
-                    </p>
-                  </Link>
+                {open && (
+                  <div className="absolute left-0 top-full bg-white border border-gray-200 rounded-lg shadow-lg w-64 z-50 mt-2">
+                    <Link
+                      to="/payments/send"
+                      className="block px-4 py-3 cursor-pointer hover:bg-gray-100"
+                    >
+                      <p className="text-sm font-semibold text-[#1F2937]">
+                        Send
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Send money to individuals or businesses
+                      </p>
+                    </Link>
 
-                  <Link
-                    to="/payments/receive"
-                    className="block px-4 py-3 cursor-pointer hover:bg-gray-100"
-                  >
-                    <p className="text-sm font-semibold text-[#1F2937]">
-                      Receive
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      Accept payments from anywhere
-                    </p>
-                  </Link>
+                    <Link
+                      to="/payments/receive"
+                      className="block px-4 py-3 cursor-pointer hover:bg-gray-100"
+                    >
+                      <p className="text-sm font-semibold text-[#1F2937]">
+                        Receive
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Accept payments from anywhere
+                      </p>
+                    </Link>
 
-                  <Link
-                    to="/payments/convert"
-                    className="block px-4 py-3 cursor-pointer hover:bg-gray-100"
-                  >
-                    <p className="text-sm font-semibold text-[#1F2937]">
-                      Convert
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      Convert currencies instantly
-                    </p>
-                  </Link>
-                </div>
+                    <Link
+                      to="/payments/convert"
+                      className="block px-4 py-3 cursor-pointer hover:bg-gray-100"
+                    >
+                      <p className="text-sm font-semibold text-[#1F2937]">
+                        Convert
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Convert currencies instantly
+                      </p>
+                    </Link>
+                  </div>
+                )}
               </div>
 
               <a className="text-[#1F2937]" href="">
@@ -156,10 +181,17 @@ const Landingpage = () => {
               </Link>
               <Link
                 to="/sign-up"
-                className="px-6 py-2 md:py-1 bg-blue-600 cursor-pointer w-[120px] md:w-[136px] h-[35px] md:-mt-2 text-white rounded-xl text-sm md:text-[16px]"
+                className="md:py-1 flex items-center justify-center bg-blue-600 cursor-pointer w-full md:w-[136px] h-[35px] md:-mt-2 text-white rounded-xl text-sm md:text-[16px]"
               >
                 Get Started
               </Link>
+              {/* <Link
+                to="/sign-up"
+                className="w-full h-10 px-4 py-2 text-sm sm:w-full sm:h-10 sm:px-4 sm:py-2 
+             md:w-[136px] md:pt-2 md:py-1 bg-blue-600 cursor-pointer text-white rounded-xl"
+              >
+                Get Started
+              </Link> */}
             </div>
           </div>
           <div className="mt-6 md:mt-10 text-center max-w-[900px]">
@@ -884,45 +916,89 @@ const Landingpage = () => {
           </div>
         </div>
       </div>
-
       <div
-        className="flex flex-col items-center justify-center text-white py-10 w-full"
+        className="flex flex-col items-center justify-center text-white 
+             py-8 sm:py-10 px-4 w-full text-center"
         style={{
           backgroundImage: "url('/src/assets/Images/footer_bg.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <img className="w-[200px] h-[43px] mb-5" src={Bestransferlogo_white} />
-        <div className="h-[2px] w-full max-w-[900px] bg-gradient-to-r from-white via-white/60 to-transparent rounded-full mb-5" />
-        <h1 className="font-bold mb-3">Company</h1>
-        <div className="flex flex-wrap justify-center gap-4 mb-5 text-[15px]">
-          <a href="">Products</a>
-          <a href="">Services</a>
-          <a href="">About Us</a>
-          <a href="">Contact Us</a>
-          <a href="">Terms & Conditions</a>
-          <a href="">Privacy Policy</a>
+        <img
+          className="w-[160px] sm:w-[200px] h-auto mb-5"
+          src={Bestransferlogo_white}
+          alt="Best Transfer"
+        />
+        <div
+          className="h-[2px] w-full max-w-[900px] 
+                  bg-gradient-to-r from-white via-white/60 to-transparent 
+                  rounded-full mb-5"
+        />
+
+        <h1 className="font-bold mb-3 text-[16px] sm:text-[18px]">Company</h1>
+        <div
+          className="flex flex-wrap justify-center gap-x-4 gap-y-2 
+               mb-5 text-[14px] sm:text-[15px]"
+        >
+          <a href="" className="hover:underline">
+            Products
+          </a>
+          <a href="" className="hover:underline">
+            Services
+          </a>
+          <a href="" className="hover:underline">
+            About Us
+          </a>
+          <a href="" className="hover:underline">
+            Contact Us
+          </a>
+          <Link
+          to="/terms-and-conditions"
+          className="cursor-pointer hover:underline"
+          >
+            Terms and Conditions
+          </Link>
+          <a href="" className="hover:underline">
+            Privacy Policy
+          </a>
         </div>
 
-        <div className="h-[2px] w-full max-w-[900px] bg-gradient-to-r from-white via-white/60 to-transparent rounded-full mb-5" />
+        <div
+          className="h-[2px] w-full max-w-[900px] 
+                  bg-gradient-to-r from-white via-white/60 to-transparent 
+                  rounded-full mb-5"
+        />
 
-        <div className="max-w-[1200px] text-center space-y-2 text-[15px]">
-          <p className="font-bold text-[20px]">
-            @2025 Best Transfer All rights reserved
-          </p>
+        <div
+          className="max-w-[1200px] space-y-4 
+               text-[13px] sm:text-[15px] leading-relaxed"
+        >
           <p>
-            FX Master Limited, transferring as FX Master, is an Authorised
-            Payment institution under firm reference number 538425 with the UK
-            Financial Conduct Authority (FCA).
+            Best Transfer is a business name of 1505333 B.C. LTD, a company
+            incorporated in British Columbia, Canada, and registered as a Money
+            Services Business (MSB) with the Financial Transactions and Reports
+            Analysis Centre of Canada (FINTRAC) under registration number
+            C100000589.
           </p>
+
           <p>
-            FX Master Limited is registered in England and Wales with Companies
-            House under company number 05248673.
+            UK services may be provided by our affiliated entity FX Master
+            Limited, a company registered in England and Wales under company
+            number 05248673. FX Master Limited is authorised and regulated by
+            the Financial Conduct Authority (FCA) in the United Kingdom as a
+            Payment Institution (Firm Reference Number: 538425).
           </p>
+
           <p>
-            <span className="font-bold">Registered address:</span> 30 Churchill
-            Place, Canary Wharf, E14 5RE London, United Kingdom.
+            For more information, you can visit the Financial Services Register.
+            Information related to digital assets is directed exclusively at
+            persons located outside the United Kingdom and must not be acted
+            upon by individuals within the United Kingdom.
+          </p>
+
+          <p className="font-bold text-[14px] sm:text-[18px] pt-3">
+            © 2026 Best Transfer. All rights reserved
           </p>
         </div>
       </div>
