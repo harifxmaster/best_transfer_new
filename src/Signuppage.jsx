@@ -89,7 +89,6 @@ export default function Signup() {
           Secure · Fast · Reliable
         </p>
 
-        {/* Toggle */}
         <div className="flex justify-center mb-10">
           <div className="bg-white rounded-full p-1 flex gap-2 shadow-inner">
             <button
@@ -242,7 +241,6 @@ export default function Signup() {
             </>
           )}
 
-          {/* Terms */}
           <div className="col-span-1 sm:col-span-2 flex items-start gap-3 mt-3 text-sm text-[#394784]">
             <input type="checkbox" className="h-4 w-4 mt-1 accent-blue-600" />
             <p>
