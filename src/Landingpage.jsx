@@ -917,13 +917,7 @@ const Landingpage = () => {
         </div>
       </div>
       <div
-        className="flex flex-col items-center justify-center text-white 
-             py-8 sm:py-10 px-4 w-full text-center"
-        style={{
-          backgroundImage: "url('/src/assets/Images/footer_bg.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className="flex flex-col items-center justify-center bg-gradient-to-r from-[#2E2968] to-[#233169] text-white py-8 sm:py-10 px-4 w-full text-center"
       >
         <img
           className="w-[160px] sm:w-[200px] h-auto mb-5"
