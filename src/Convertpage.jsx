@@ -18,9 +18,7 @@ const Convertpage = () => {
 
           {/* Feature 1 */}
           <div className="flex gap-3 sm:gap-5 mb-6 sm:mb-10">
-            <div className="w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-full border border-blue-500 text-blue-600 text-sm sm:text-base">
-              $
-            </div>
+            <img className="w-12 h-12" src="/requestpayment.png" />
             <div>
               <h4 className="text-base sm:text-lg font-semibold text-[#0b1b3f] mb-1">
                 Invoice-based collections
@@ -33,9 +31,7 @@ const Convertpage = () => {
 
           {/* Feature 2 */}
           <div className="flex gap-3 sm:gap-5 mb-6 sm:mb-10">
-            <div className="w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-full border border-blue-500 text-blue-600 text-sm sm:text-base">
-              ↔
-            </div>
+            <img className="w-12 h-12" src="/fastpayment.png" />
             <div>
               <h4 className="text-base sm:text-lg font-semibold text-[#0b1b3f] mb-1">
                 Near real-time settlement
@@ -48,9 +44,7 @@ const Convertpage = () => {
 
           {/* Feature 3 */}
           <div className="flex gap-3 sm:gap-5 mb-6 sm:mb-10">
-            <div className="w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-full border border-blue-500 text-blue-600 text-sm sm:text-base">
-              ↔
-            </div>
+            <img className="w-12 h-12" src="/bitcointodollar.png" />
             <div>
               <h4 className="text-base sm:text-lg font-semibold text-[#0b1b3f] mb-1">
                 Flat and stablecoin settlement
@@ -63,9 +57,7 @@ const Convertpage = () => {
 
           {/* Feature 4 */}
           <div className="flex gap-3 sm:gap-5 mb-6 sm:mb-10">
-            <div className="w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-full border border-blue-500 text-blue-600 text-sm sm:text-base">
-              ↔
-            </div>
+            <img className="w-12 h-12" src="/settlementpayment.png" />
             <div>
               <h4 className="text-base sm:text-lg font-semibold text-[#0b1b3f] mb-1">
                 Automated reconciliation support

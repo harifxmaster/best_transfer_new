@@ -28,7 +28,7 @@ export default function SendPage() {
 
           <div className="space-y-6 sm:space-y-8">
             <div className="flex gap-3 sm:gap-4">
-              <div className="text-blue-600 text-xl sm:text-2xl">⤢</div>
+              <img className="w-12 h-12" src="/fastpayment.png" />
               <div>
                 <h3 className="font-semibold text-base sm:text-lg text-[#0B214E]">
                   Global collections & fast payouts
@@ -40,7 +40,7 @@ export default function SendPage() {
             </div>
 
             <div className="flex gap-3 sm:gap-4">
-              <div className="text-blue-600 text-xl sm:text-2xl">⤓</div>
+              <img className="w-12 h-12" src="/multieurrency.png" />
               <div>
                 <h3 className="font-semibold text-base sm:text-lg text-[#0B214E]">
                   Multi-currency support (USD, EUR, GBP, CAD)
@@ -52,7 +52,7 @@ export default function SendPage() {
             </div>
 
             <div className="flex gap-3 sm:gap-4">
-              <div className="text-blue-600 text-xl sm:text-2xl">⤡</div>
+              <img className="w-12 h-12" src="/settlementpayment.png" />
               <div>
                 <h3 className="font-semibold text-base sm:text-lg text-[#0B214E]">
                   Real-time global payouts
@@ -64,7 +64,7 @@ export default function SendPage() {
             </div>
           </div>
 
-          <button className="mt-8 sm:mt-12 bg-[#2F6DF6] hover:bg-[#255BEA] text-white font-medium px-4 sm:px-6 py-2 sm:py-3 rounded-lg flex items-center gap-2 text-sm sm:text-base">
+          <button className="mt-8 sm:mt-12 cursor-pointer bg-[#2F6DF6] hover:bg-[#255BEA] text-white font-medium px-4 sm:px-6 py-2 sm:py-3 rounded-lg flex items-center gap-2 text-sm sm:text-base">
             <span>CTA: Explore Payout Workflows</span>
           </button>
         </div>

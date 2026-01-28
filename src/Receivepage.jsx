@@ -18,9 +18,7 @@ const Receivepage = () => {
 
           {/* Feature 1 */}
           <div className="flex gap-3 sm:gap-4 mb-6 sm:mb-8">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600 font-bold text-sm sm:text-base">
-              ▶
-            </div>
+            <img className="w-12 h-12" src="/requestpayment.png" />
             <div>
               <h4 className="text-base sm:text-lg font-semibold text-[#0b1b3f]">
                 Global collections
@@ -33,9 +31,7 @@ const Receivepage = () => {
 
           {/* Feature 2 */}
           <div className="flex gap-3 sm:gap-4 mb-6 sm:mb-8">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600 font-bold text-sm sm:text-base">
-              ◎
-            </div>
+            <img className="w-12 h-12" src="/settlementpayment.png" />
             <div>
               <h4 className="text-base sm:text-lg font-semibold text-[#0b1b3f]">
                 Flexible settlement options
@@ -48,9 +44,7 @@ const Receivepage = () => {
 
           {/* Feature 3 */}
           <div className="flex gap-3 sm:gap-4 mb-8 sm:mb-12">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600 font-bold text-sm sm:text-base">
-              ⇪
-            </div>
+            <img className="w-12 h-12" src="/stablecoins.png" />
             <div>
               <h4 className="text-base sm:text-lg font-semibold text-[#0b1b3f]">
                 Improved cash flow
@@ -62,7 +56,7 @@ const Receivepage = () => {
           </div>
 
           {/* CTA */}
-          <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium text-sm sm:text-base transition">
+          <button className="flex items-center gap-2 bg-blue-600 cursor-pointer hover:bg-blue-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium text-sm sm:text-base transition">
             CTA: See How It Works 
           </button>
         </div>
