@@ -1,10 +1,11 @@
 import React from "react";
 import Convert from "./assets/Videos/Convert.mp4";
+import Footer from "./Footer"
 
 const Convertpage = () => {
   return (
     <div className="bg-[#f5f8fe] py-8 sm:py-14 px-4 sm:px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+      <div className="max-w-7xl mx-auto bg-white rounded-s mb-2 shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2">
 
         {/* LEFT HALF (TEXT) */}
         <div className="px-4 sm:px-8 lg:px-14 py-8 sm:py-12">
@@ -82,8 +83,8 @@ const Convertpage = () => {
             />
           </div>
         </div>
-
       </div>
+      <Footer />
     </div>
   );
 };

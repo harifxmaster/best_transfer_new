@@ -10,9 +10,6 @@ const Privacystatement = () => {
   const location = useLocation();
 
   useEffect(()=>{
-    if(location.state?.scrolltocontact){
-      contactinforef.current?.scrollIntoView({behavior:"smooth",block:"start"})
-    }
 
     if(location.state?.scrolltostart){
       privacyref.current?.scrollIntoView({behavior:"smooth",block:"start"})

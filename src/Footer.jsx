@@ -27,11 +27,15 @@ const Footer = () => {
         <a href="" className="hover:underline">
           Services
         </a>
-        <a href="" className="hover:underline">
-          About Us
-        </a>
         <Link
-          to="/privacy-policy"
+          to = "/"
+          state={{scrolltohome:true}}
+          className="hover:underline cursor-pointer"
+        >
+          About Us
+        </Link>
+        <Link
+          to="/"
           state={{ scrolltocontact: true }}
           className="hover:underline cursor-pointer"
         >

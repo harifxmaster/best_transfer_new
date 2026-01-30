@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 // import Subtract from "../public/Subtract.svg";
 
 // import conversion from "./assets/Images/conversion.png";
@@ -56,6 +56,8 @@ const Landingpage = () => {
   const [imagedec, setImagedec] = useState(1);
   const [openFaqs, setOpenFaqs] = useState({});
   // const [open, setOpen] = useState(false);
+  const contactusref = useRef(null);
+  const location = useLocation();
 
   const toggleFaq = (key) => {
     setOpenFaqs((prev) => ({
@@ -63,6 +65,12 @@ const Landingpage = () => {
       [key]: !prev[key],
     }));
   };
+
+  useEffect(() => {
+    if (location.state?.scrolltocontact) {
+      contactusref.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  },[location.state]);
 
   const stepclass = (stepNumber) => {
     return imagedec >= stepNumber ? "opacity-100 blur-0" : "opacity-40 blur-sm";
@@ -175,12 +183,7 @@ const Landingpage = () => {
 
             <div className="flex justify-center md:w-1/2">
               {imagedec === 1 && (
-                <div
-                  className="w-[280px] md:w-[450px] h-auto bg-contain bg-no-repeat bg-center p-5"
-                  // style={{
-                  //   backgroundImage: 'url("/src/assets/Images/Vector_21.png")',
-                  // }}
-                >
+                <div className="w-[280px] md:w-[450px] h-auto bg-contain bg-no-repeat bg-center p-5">
                   <img src={step1img} className="w-full h-[400px]" />
                 </div>
               )}
@@ -677,6 +680,7 @@ const Landingpage = () => {
 
       <div
         className="bg-cover bg-center py-20 px-4"
+        ref={contactusref}
         style={{
           backgroundImage: "url('/src/assets/Images/callbackbg.png')",
         }}
@@ -740,6 +744,7 @@ const Landingpage = () => {
                   <button className="w-full bg-blue-900 text-white py-3 rounded-lg cursor-pointer">
                     Send a Message
                   </button>
+                  <p className="text-[#1F3A66] mt-2">Any Queries Email:<a className="hover:underline hover:text-blue-600 font-bold" href="mailto:Admin@Besttransfer.com">Admin@Besttransfer.com</a></p>
                 </div>
               </div>
             </div>

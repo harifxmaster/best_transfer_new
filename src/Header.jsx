@@ -1,12 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useState,useRef } from "react";
 import Subtract from "../public/Subtract.svg";
 import crypto from "./assets/Images/crypto.png";
 import conversion from "./assets/Images/conversion.png";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const aboutusref = useRef(null);
+
+  useEffect(()=>{
+    if(location.state?.scrolltohome){
+      aboutusref.current?.scrollIntoView({behavior:"smooth"})
+    }
+  },[location.state])
   return (
     <div
       onClick={() => {
@@ -17,7 +25,7 @@ const Header = () => {
       className="w-full min-h-screen bg-[#F5F0FF]  scrollbar-hide relative bg-cover overflow-x-hidden overflow-y-hidden"
       style={{ backgroundImage: "url('/src/assets/Images/bg.png')" }}
     >
-      <div className="max-w-[1200px] h-[760px] mx-auto p-4 md:p-4 flex flex-col scrollbar-hide items-center">
+      <div ref={aboutusref} className="max-w-[1200px] h-[760px] mx-auto p-4 md:p-4 flex flex-col scrollbar-hide items-center">
         <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4 md:gap-20">
           <div className="flex items-center gap-2">
             <img
@@ -25,7 +33,7 @@ const Header = () => {
               src={Subtract}
               alt="Subtract"
             />
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-start">
               <h1 className="text-[#394784] font-bold text-lg md:text-xl">
                 Best Transfer
               </h1>
@@ -40,7 +48,8 @@ const Header = () => {
               Home
             </Link>
             <div className="relative inline-block">
-              <span
+              <Link
+                to="/payments/home"
                 onClick={() => setOpen((prev) => !prev)}
                 className="cursor-pointer text-[#1F2937] font-medium px-2 inline-flex items-center select-none"
               >
@@ -61,7 +70,7 @@ const Header = () => {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </span>
+              </Link>
               {open && (
                 <div className="absolute left-0 top-full bg-white border border-gray-200 rounded-lg shadow-lg w-64 z-50 mt-2">
                   <Link
@@ -102,17 +111,15 @@ const Header = () => {
             </div>
 
             <a className="text-[#1F2937]" href="">
-              Send Money
-            </a>
-            <a className="text-[#1F2937]" href="">
               Transfer Crypto
             </a>
-            <a className="text-[#1F2937]" href="">
-              Support
-            </a>
-            <a className="text-[#1F2937]" href="">
-              About Us
-            </a>
+            <Link
+            to="/"
+            state={{scrolltocontact:true}}
+            className="text-[#1F2937]"
+            >
+            Support 
+            </Link>
             <Link
               to="/sign-in"
               className="text-[#1A54CF] font-bold ml-10 text-sm md:text-[16px]"
@@ -121,7 +128,7 @@ const Header = () => {
             </Link>
             <Link
               to="/sign-up"
-              className="md:py-1 flex items-center justify-center bg-blue-600 cursor-pointer w-full md:w-[136px] h-[35px] md:-mt-2 text-white rounded-xl text-sm md:text-[16px]"
+              className="md:py-1 flex items-center justify-center ml-5 bg-blue-600 cursor-pointer w-full md:w-[136px] h-[35px] md:-mt-2 text-white rounded-xl text-sm md:text-[16px]"
             >
               Get Started
             </Link>

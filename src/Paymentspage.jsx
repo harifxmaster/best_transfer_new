@@ -12,6 +12,7 @@ const PaymentsPage = () => {
   const sendRef = useRef(null);
   const receiveRef = useRef(null);
   const convertRef = useRef(null);
+  const homeref = useRef(null)
 
   useEffect(() => {
     // Scroll immediately to the section after HeroSection
@@ -21,6 +22,8 @@ const PaymentsPage = () => {
       receiveRef.current?.scrollIntoView({ behavior: "auto" });
     } else if (type === "convert") {
       convertRef.current?.scrollIntoView({ behavior: "auto" });
+    } else if (type === "home"){
+      homeref.current?.scrollIntoView({behavior:"auto"});
     }
   }, [type]);
 

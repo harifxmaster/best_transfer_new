@@ -54,11 +54,6 @@ const Receivepage = () => {
               </p>
             </div>
           </div>
-
-          {/* CTA */}
-          <button className="flex items-center gap-2 bg-blue-600 cursor-pointer hover:bg-blue-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium text-sm sm:text-base transition">
-            CTA: See How It Works 
-          </button>
         </div>
 
         {/* RIGHT SIDE – VIDEO ONLY */}

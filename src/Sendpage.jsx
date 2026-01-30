@@ -7,7 +7,6 @@ export default function SendPage() {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.play().catch(() => {
-        // autoplay might be blocked until user interaction
       });
     }
   }, []);
@@ -63,10 +62,6 @@ export default function SendPage() {
               </div>
             </div>
           </div>
-
-          <button className="mt-8 sm:mt-12 cursor-pointer bg-[#2F6DF6] hover:bg-[#255BEA] text-white font-medium px-4 sm:px-6 py-2 sm:py-3 rounded-lg flex items-center gap-2 text-sm sm:text-base">
-            <span>CTA: Explore Payout Workflows</span>
-          </button>
         </div>
 
         {/* RIGHT SECTION – VIDEO */}
